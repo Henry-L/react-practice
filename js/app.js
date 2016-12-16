@@ -1,12 +1,20 @@
 import React from 'react';
 
 let schema = require('json!./schema.json');
+var simpleProp = []
+var complexProp = [];
+
+schema.forEach((prop) => {
+  if(prop.containing_object || prop.properties) {
+    complexProp.push(prop)
+  } else {
+    simpleProp.push(prop)
+  }
+})
 
 class InformationList extends React.Component {
   constructor(props) {
     super(props);
-
-    // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
   }
 
