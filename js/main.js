@@ -1,5 +1,11 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import InformationList from './app';
+import ReactDOM from 'react-dom';
 
-ReactDom.render(<InformationList />, document.getElementById('app'))
+import App from './modules/App'
+
+let schema = require('json!./schema.json');
+
+ReactDOM.render(
+    <App products={schema}/>,
+    document.getElementById('app')
+);
