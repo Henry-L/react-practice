@@ -10,7 +10,7 @@ class DataView extends React.Component {
         return (
             <table>
                 <tbody>
-                    {Object.keys(this.props.selectedObject).map((key, ind) => {
+                    {Object.keys(this.props.selectedObject).map((key) => {
                         if (relevantFields.indexOf(key) !== -1) {
                             return <tr key={key}>
                                 <th>{key}</th>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import SimpleProps from './SimpleProps'
+import ComplexProps from './ComplexProps'
+
 // TRY TO USE AS REAL API!!
 // DONT PRETEND ITS ALL LOADED, ASK FOR INFO IN PIECES!
 // getGeneralProps, get complexProps, getPropData
@@ -31,18 +34,13 @@ class InformationList extends React.Component {
             <div>
                 <div>
                     <h1>General Info</h1>
-                    <ul>
-                        {simpleProp.map((item, index) => {
-                            return <li key={index} onClick={() => this.handleChange(item)}>{item.name}</li>;
-                        })}
-                    </ul>
+                    <SimpleProps properties={simpleProp} onObjectSelect={this.handleChange}/>
                 </div>
                 <div>
-                    <ul>
-                        {complexProp.map((item, index) => {
-                            return <li key={index} onClick={() => this.handleChange(item)}>{item.name}</li>;
-                        })}
-                    </ul>
+                    <ComplexProps properties={complexProp} onObjectSelect={this.handleChange}/>
+                    {/*{complexProp.map((item, index) => {*/}
+                        {/*return <li key={index} onClick={() => this.handleChange(item)}>{item.name}</li>;*/}
+                    {/*})}*/}
                 </div>
             </div>
         );
