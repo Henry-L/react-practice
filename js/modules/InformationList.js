@@ -4,47 +4,44 @@ import { Link } from 'react-router';
 import SimpleProps from './SimpleProps'
 import ComplexProps from './ComplexProps'
 
-// TRY TO USE AS REAL API!!
-// DONT PRETEND ITS ALL LOADED, ASK FOR INFO IN PIECES!
-// getGeneralProps, get complexProps, getPropData
-
 class InformationList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-    handleChange(obj) {
-        this.props.onObjectSelect(obj);
-    }
+  handleChange(obj) {
+    this.props.onObjectSelect(obj);
+  }
 
-    render() {
-        let simpleProp = [];
-        let complexProp = [];
+  render() {
+    let simplePropArr = [];
+    let complexPropArr = [];
 
-        this.props.products.forEach((prop) => {
-            if (prop.containing_object || prop.properties) {
-                complexProp.push(prop)
-            } else {
-                simpleProp.push(prop)
-            }
-        });
+    this.props.schema.forEach((prop) => {
+      if (prop.containing_object || prop.properties) {
+        complexPropArr.push(prop)
+      } else {
+        simplePropArr.push(prop)
+      }
+    });
 
-        return (
-            <div>
-                <div>
-                    <h1>General Info</h1>
-                    <SimpleProps properties={simpleProp} onObjectSelect={this.handleChange}/>
-                </div>
-                <div>
-                    <ComplexProps properties={complexProp} onObjectSelect={this.handleChange}/>
-                    {/*{complexProp.map((item, index) => {*/}
-                        {/*return <li key={index} onClick={() => this.handleChange(item)}>{item.name}</li>;*/}
-                    {/*})}*/}
-                </div>
-            </div>
-        );
-    }
+    return (
+      <div>
+        <div>
+          <h1>General Info</h1>
+          <SimpleProps
+            properties={simplePropArr}
+            onObjectSelect={this.handleChange}/>
+        </div>
+        <div>
+          <ComplexProps
+            properties={complexPropArr}
+            onObjectSelect={this.handleChange}/>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default InformationList

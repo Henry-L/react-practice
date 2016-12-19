@@ -6,6 +6,6 @@ import App from './modules/App'
 let schema = require('json!./schema.json');
 
 ReactDOM.render(
-    <App products={schema}/>,
-    document.getElementById('app')
+  <App schema={schema}/>,
+  document.getElementById('app')
 );
