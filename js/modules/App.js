@@ -7,7 +7,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedObject: { app_keys: [] }
+            selectedObject: {}
         };
 
         this.selectObject = this.selectObject.bind(this);

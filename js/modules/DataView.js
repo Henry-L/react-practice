@@ -6,23 +6,18 @@ class DataView extends React.Component {
     }
 
     render() {
+        let relevantFields = ['name', 'data_type', 'app_keys'];
         return (
             <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Data Type</th>
-                        <th>Permissions</th>
-                    </tr>
-                </thead>
                 <tbody>
-                    <tr>
-                        <td>{this.props.selectedObject.name}</td>
-                        <td>{this.props.selectedObject.data_type}</td>
-                        <td>{this.props.selectedObject.app_keys.map((perm, ind) => {
-                            return <p key={ind}>{perm}</p>
-                        })}</td>
-                    </tr>
+                    {Object.keys(this.props.selectedObject).map((key, ind) => {
+                        if (relevantFields.indexOf(key) !== -1) {
+                            return <tr key={key}>
+                                <th>{key}</th>
+                                <td>{this.props.selectedObject[key]}</td>
+                            </tr>
+                        }
+                    })}
                 </tbody>
             </table>
         );
