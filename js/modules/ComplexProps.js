@@ -16,6 +16,10 @@ class ComplexProps extends React.Component {
     this.props.onObjectSelect(obj);
   }
 
+  handleChildClick(obj) {
+    this.props.onObjectSelect(obj);
+  }
+
   render() {
     return (
       <div>
@@ -25,15 +29,17 @@ class ComplexProps extends React.Component {
               <SimpleProps
                 properties={[prop]}
                 onObjectSelect={this.handleClick}/>
-              { hasChildren(prop) ? (
-                <ComplexProps
-                  properties={[prop.containing_object]}
-                  onObjectSelect={this.handleClick}/>
-              ) : (
-                <SimpleProps
-                  properties={prop.properties}
-                  onObjectSelect={this.handleClick}/>
-              )}
+              <div style={{display: this.props.selectedObject === prop ? 'initial' : 'none'}}>
+                { hasChildren(prop) ? (
+                  <ComplexProps
+                    properties={[prop.containing_object]}
+                    onObjectSelect={this.handleClick}/>
+                ) : (
+                  <SimpleProps
+                    properties={prop.properties}
+                    onObjectSelect={this.handleClick}/>
+                )}
+              </div>
             </div>
           )
         })}
