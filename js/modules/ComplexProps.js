@@ -29,10 +29,11 @@ class ComplexProps extends React.Component {
               <SimpleProps
                 properties={[prop]}
                 onObjectSelect={this.handleClick}/>
-              <div style={{display: this.props.selectedObject === prop ? 'initial' : 'none'}}>
+              <div style={{display: this.props.selectedObject.includes(prop) ? 'initial' : 'none'}}>
                 { hasChildren(prop) ? (
                   <ComplexProps
                     properties={[prop.containing_object]}
+                    selectedObject={this.props.selectedObject}
                     onObjectSelect={this.handleClick}/>
                 ) : (
                   <SimpleProps

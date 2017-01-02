@@ -7,15 +7,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedObject: {}
+      selectedObject: []
     };
 
     this.selectObject = this.selectObject.bind(this);
   }
 
-  selectObject(selectedObject) {
+  selectObject(newObject) {
+    this.state.selectedObject.push(newObject);
     this.setState({
-      selectedObject: selectedObject
+      selectedObject: this.state.selectedObject
     });
   }
 
