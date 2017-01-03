@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   selectObject(newObject) {
-    let newObjectArr = [];
+    let newObjectArr;
     if(newObject.parent_id) {
       this.state.selectedObject.push(newObject);
       newObjectArr = this.state.selectedObject
@@ -31,14 +31,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ float: 'left' }}>
+        <div className="col-md-3">
           <InformationList
             schema={this.props.schema}
             selectedObject={this.state.selectedObject}
             onObjectSelect={this.selectObject}
           />
         </div>
-        <div style={{ float: 'right' }}>
+        <div className="col-md-9">
           <DataView
             selectedObject={this.state.selectedObject}
           />

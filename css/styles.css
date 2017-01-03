@@ -1,8 +1,17 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
+  background: #F1F1F1;
 }
 
 ol, ul {
   padding-left: 30px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.indented {
+  padding-left: 10px;
 }

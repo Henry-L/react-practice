@@ -16,10 +16,6 @@ class ComplexProps extends React.Component {
     this.props.onObjectSelect(obj);
   }
 
-  handleChildClick(obj) {
-    this.props.onObjectSelect(obj);
-  }
-
   render() {
     return (
       <div>
@@ -29,7 +25,9 @@ class ComplexProps extends React.Component {
               <SimpleProps
                 properties={[prop]}
                 onObjectSelect={this.handleClick}/>
-              <div style={{display: this.props.selectedObject.includes(prop) ? 'initial' : 'none'}}>
+              <div style={{
+                display: this.props.selectedObject.includes(prop) ? 'block' : 'none'
+              }} className="indented">
                 { hasChildren(prop) ? (
                   <ComplexProps
                     properties={[prop.containing_object]}

@@ -34,6 +34,7 @@ class InformationList extends React.Component {
             properties={simplePropArr}
             onObjectSelect={this.handleChange}/>
         </div>
+        <hr></hr>
         <div>
           <ComplexProps
             properties={complexPropArr}
