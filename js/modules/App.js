@@ -14,10 +14,18 @@ class App extends React.Component {
   }
 
   selectObject(newObject) {
-    this.state.selectedObject.push(newObject);
+    let newObjectArr = [];
+    if(newObject.parent_id) {
+      this.state.selectedObject.push(newObject);
+      newObjectArr = this.state.selectedObject
+    } else {
+      newObjectArr = [newObject];
+    }
+
     this.setState({
-      selectedObject: this.state.selectedObject
+      selectedObject: newObjectArr
     });
+
   }
 
   render() {
