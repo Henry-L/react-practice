@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class SimpleProps extends React.Component {
   constructor(props) {
@@ -14,13 +14,18 @@ class SimpleProps extends React.Component {
     return (
       <ul>
         {this.props.properties.map((prop, ind) => {
-          return <li key={ind}><a onClick={() => this.handleClick(prop)}>
+          return (<li key={prop.id}><a onClick={() => this.handleClick(prop)}>
             {prop.name}
-          </a></li>
+          </a></li>);
         })}
       </ul>
-    )
+    );
   }
 }
 
-export default SimpleProps
+SimpleProps.propTypes = {
+  properties: React.PropTypes.array,
+  onObjectSelect: React.PropTypes.func,
+};
+
+export default SimpleProps;

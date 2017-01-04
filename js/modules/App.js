@@ -1,29 +1,28 @@
-import React from 'react'
+import React from 'react';
 
-import InformationList from './InformationList'
-import DataView from './DataView'
+import InformationList from './InformationList';
+import DataView from './DataView';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedObject: []
+      selectedObjects: [],
     };
 
-    this.selectObject = this.selectObject.bind(this);
+    this.objectSelect = this.objectSelect.bind(this);
   }
 
-  selectObject(newObject) {
-    let newObjectArr;
-    if(newObject.parent_id) {
-      this.state.selectedObject.push(newObject);
-      newObjectArr = this.state.selectedObject
+  objectSelect(newObject) {
+    let obj = [...this.state.selectedObjects];
+    if (newObject.parent_id) {
+      obj.push(newObject);
     } else {
-      newObjectArr = [newObject];
+      obj = [newObject];
     }
 
     this.setState({
-      selectedObject: newObjectArr
+      selectedObjects: obj,
     });
 
   }
@@ -34,13 +33,13 @@ class App extends React.Component {
         <div className="col-md-3">
           <InformationList
             schema={this.props.schema}
-            selectedObject={this.state.selectedObject}
-            onObjectSelect={this.selectObject}
+            selectedObjects={this.state.selectedObjects}
+            onObjectSelect={this.objectSelect}
           />
         </div>
         <div className="col-md-9">
           <DataView
-            selectedObject={this.state.selectedObject}
+            selectedObjects={this.state.selectedObjects}
           />
         </div>
       </div>
@@ -48,4 +47,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default App;

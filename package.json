@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "test": "jscs ./js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "webpack": "^1.13.3"
   },
   "devDependencies": {
+    "jscs": "^3.0.7",
     "webpack-dev-server": "^1.16.2"
   }
 }

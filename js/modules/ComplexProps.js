@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import SimpleProps from './SimpleProps'
+import SimpleProps from './SimpleProps';
 
 function hasChildren(property) {
-    return !!property.containing_object;
+  return !!property.containing_object;
 }
 
 class ComplexProps extends React.Component {
@@ -21,17 +21,17 @@ class ComplexProps extends React.Component {
       <div>
         {this.props.properties.map((prop, ind) => {
           return (
-            <div key={ind}>
+            <div key={prop.id}>
               <SimpleProps
                 properties={[prop]}
                 onObjectSelect={this.handleClick}/>
               <div style={{
-                display: this.props.selectedObject.includes(prop) ? 'block' : 'none'
+                display: this.props.selectedObjects.includes(prop) ? 'block' : 'none',
               }} className="indented">
                 { hasChildren(prop) ? (
                   <ComplexProps
                     properties={[prop.containing_object]}
-                    selectedObject={this.props.selectedObject}
+                    selectedObjects={this.props.selectedObjects}
                     onObjectSelect={this.handleClick}/>
                 ) : (
                   <SimpleProps
@@ -40,11 +40,17 @@ class ComplexProps extends React.Component {
                 )}
               </div>
             </div>
-          )
+          );
         })}
       </div>
-    )
+    );
   }
 }
 
-export default ComplexProps
+ComplexProps.propTypes = {
+  properties: React.PropTypes.array,
+  selectedObjects: React.PropTypes.array,
+  onObjectSelect: React.PropTypes.func,
+};
+
+export default ComplexProps;

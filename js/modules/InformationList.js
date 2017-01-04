@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import SimpleProps from './SimpleProps'
-import ComplexProps from './ComplexProps'
+import SimpleProps from './SimpleProps';
+import ComplexProps from './ComplexProps';
 
 class InformationList extends React.Component {
   constructor(props) {
@@ -20,9 +20,9 @@ class InformationList extends React.Component {
 
     this.props.schema.forEach((prop) => {
       if (prop.containing_object || prop.properties) {
-        complexPropArr.push(prop)
+        complexPropArr.push(prop);
       } else {
-        simplePropArr.push(prop)
+        simplePropArr.push(prop);
       }
     });
 
@@ -38,7 +38,7 @@ class InformationList extends React.Component {
         <div>
           <ComplexProps
             properties={complexPropArr}
-            selectedObject={this.props.selectedObject}
+            selectedObjects={this.props.selectedObjects}
             onObjectSelect={this.handleChange}/>
         </div>
       </div>
@@ -46,4 +46,10 @@ class InformationList extends React.Component {
   }
 }
 
-export default InformationList
+InformationList.propTypes = {
+  schema: React.PropTypes.array,
+  selectedObjects: React.PropTypes.array,
+  onObjectSelect: React.PropTypes.func,
+};
+
+export default InformationList;
